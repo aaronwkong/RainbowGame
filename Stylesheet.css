@@ -1,0 +1,69 @@
+/* 
+Stage 1 colours: 
+
+red: rgb(255, 204, 204)
+orange: rgb(255, 230, 204)
+yellow: rgb(255, 255, 204)
+yellow green: rgb(230, 255, 204)
+green: rgb(204, 255, 204)
+turquoise: rgb(204, 255, 230)
+blue: rgb(204, 255, 255)
+indigo: rgb(204, 230, 255)
+violet: rgb(204, 204, 255)
+pink: rgb(255, 204, 217)
+
+Stage 2 colours:
+
+*/
+h1 {
+	color: #ffcccc;
+}
+
+h2 {
+	color: #ffe6cc;
+}
+
+h3 {
+	color: #ffffcc;
+}
+
+h4 {
+	color: #e6ffcc;
+}
+
+h5 {
+	color: #ccffcc;
+}
+
+h6 {
+	color: #ccffe6;
+}
+
+h7 {
+	color: #ccffff;
+}
+
+h8 {
+	color: #cce6ff;
+}
+
+h9 {
+	color: #ccccff;
+}
+
+h10 {
+	color: #e6ccff;
+}
+
+h11 {
+	color: #ffccff;
+}
+
+h12 {
+	color: #ffcce6;
+}
+
+h13 {
+	color: #ffcccc;
+}
+
