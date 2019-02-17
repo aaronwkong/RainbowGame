@@ -4,11 +4,38 @@ var guessColours = new Array(5);
 var index = 0;
 var lvlsPassed = 0;
 
-// need to fill in colours for the bubbles!!!!! HTML DOC MUST CHANGE  
+// Displays a white page??
+function whitePage() {
+	var answer = document.getElementById("answer").innerHTML;
+	// hide answer if shown
+	if (answer.style.visibility === "visible") {
+		answer.style.visibility = "hidden";
+	}
+	// show the answer if not shown already (i.e question was in display)
+	else {
+		answer.style.visibility = "visible";
+	}
+}
+
+//Transitions into other pages  
+function transition() {
+	var answer = document.getElementById("answer").innerHTML;
+	// if answer is displayed rn
+	if (answer.style.visibility === "visible") {
+		whitePage();
+		var toShow = document.getElementById("question").innerHTML;
+	}
+	// if question is displayed rn
+	else {
+		setTimeout(whitePage, 5000);
+		var toShow = document.getElementById("answer").innerHTML;
+	}
+	toShow.style.visibility = "visible"; 
+}
 
 // Resets colour scheme of game
 function resetColour() {
-	var colour_list = document.getElementsByClassName("").innerHTML;
+	var colour_list = document.getElementByClassName("choice").innerHTML;
 	if (lvlsPassed <= 5) {
 		colours = {#ffcccc, #ffe6cc, #ffffcc, #e6ffcc, #ccffcc, #ccffff, #cce6ff, #ccccff, #e6ccff, #ffcce6};
 	}
@@ -33,38 +60,12 @@ function resetColour() {
 	}
 }
 
-function transition() {
-	var answer = document.getElementByClassName("answer").innerHTML;
-	// if answer is displayed rn
-	if (answer.style.display === "inline") {
-		whitePage();
-		var toShow = document.getElementByClassName("question").innerHTML;
-	}
-	// if question is displayed rn
-	else {
-		setTimeout(whitePage, 5000);
-		var toShow = document.getElementByClassName("answer").innerHTML;
-	}
-	toShow.style.display = "inline"; 
-}
-
-function whitePage() {
-	var answer = document.getElementByClassName("answer").innerHTML;
-	// hide answer if shown
-	if (answer.style.display === "inline") {
-		answer.style.display = "hidden";
-	}
-	// show the answer if not shown already (i.e question was in display)
-	else {
-		answer.style.display = "inline";
-	}
-}
 
 // Main Program
 // Refreshes the question colours and creates an array for them
 function main() {
 	resetColour();
-	var quest_colour = document.getElementsByClassName("question").innerHTML;
+	var quest_colour = document.getElementByClassName("question").innerHTML;
 	for (i = 0; i < 5; ++i) {
 		var randInt = Math.floor(Math.random() * 10);
 		questionColours[i] = colours[randInt];
