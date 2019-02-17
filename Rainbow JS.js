@@ -29,16 +29,8 @@ function resetColour() {
 	}
 	for (i = 0; i <= 9; ++i) {
 		colour_list[i].style.background-color = colours[i];
-		setTimeout(hideQuestion, 5000);
+		transition();
 	}
-}
-
-// Hides the question and reveals the guess page
-function hideQuestion() {
-	var toHide = document.getElementsByClassName("question").innerHTML;
-	toHide.style.display = "hidden";
-	var toShow = document.getElementByClassName("answer").innerHTML;
-	toShow.style.display = "inline"; 
 }
 
 function transition() {
@@ -62,18 +54,10 @@ function whitePage() {
 	if (answer.style.display === "inline") {
 		answer.style.display = "hidden";
 	}
-	var whiteScreen = document.getElementByClassName("empty").innerHTML;
-	whiteScreen.style.display = "inline";
-	if (answer.style.display === "hidden") {
+	// show the answer if not shown already (i.e question was in display)
+	else {
 		answer.style.display = "inline";
 	}
-}
-
-function hideAnswer() {
-	var toHide = document.getElementsByClassName("answer").innerHTML;
-	toHide.style.display = "inline"; 
-	var toShow = document.getElementByClassName("question").innerHTML;
-	toShow.style.display = "hidden"; 
 }
 
 // Main Program
@@ -108,6 +92,6 @@ function guessAnswer() {
 	}
 	// they succeeded if this happens! 
 	++lvlsPassed;
-	hideAnswer();
+	transition();
 }
 
