@@ -1,6 +1,6 @@
 
 var colours = ['#ffcccc', '#ffe6cc', '#ffffcc', '#e6ffcc', '#ccffcc', '#ccffff', '#cce6ff', '#ccccff', '#e6ccff', '#ffcce6'];
-var questionColours = [0, 0, 0, 0, 0];
+var questionColours = ['#000000', '#000000', '#000000', '#000000', '#000000'];
 var guessColours = [0, 0, 0, 0, 0];
 var index = 0;
 var lvlsPassed = 0;
@@ -111,12 +111,35 @@ function changeColour(newIndex) {
 
 }
 
+
+// converts the hex to rgb format so a comparison can be made
+function lazyConvertToRGB(){
+	var invisible = document.querySelectorAll('.invisible span');
+	for (i = 0; i < 5; ++i){
+		invisible[i].style.backgroundColor = questionColours[i]; // fill an invisible div
+	}
+}
+
+
 // Checks user answer upon submittal 
 function guessAnswer() {
+	var lose = false;
+	lazyConvertToRGB();
+	var invisible = document.querySelectorAll('.invisible span');
+	for (i = 0; i < 5; ++i){ 
+		questionColours[i] = invisible[i].style.backgroundColor; // fill questionColours[i] with the rgb instead of hex
+	}
 	for (i = 0; i < 5; ++i) {
-		if (guessColours[i] != questionColours[i]) {
+		if (guessColours[i] != questionColours[i]) { // guesColours[i] gets converted to rgb so we want questionsColours[i] as rgb too
+			alert("Incorrect colours!"); // for now
+			lose = true;
+			break;
 			// don't know what happens yet - page changes and error code
 		}
+	}
+
+	if(lose == false){
+		alert("Correct!"); // for now
 	}
 	// they succeeded if this happens! 
 	++lvlsPassed;

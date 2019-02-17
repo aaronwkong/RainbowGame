@@ -127,3 +127,12 @@ p {
 	Padding-right: 5%;
 	Text-align: justify;
 }
+
+.invisible {
+	Text-align:center;
+	display: none;
+}
+
+.invisible span{
+	display: none;
+}
