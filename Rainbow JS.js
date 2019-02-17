@@ -92,16 +92,23 @@ function main() {
 
 
 // Implements user's guess and modifies the guess array
-function guess(colour) {
-	guessColours[index] = colour;
-	var user_colour = document.querySelectorAll(".user").innerHTML;
-	user_colour[index].style.background = guessColours[index];
-	++index;
+function guess(guessIndex) {
+	
+	var choice = document.querySelectorAll('.choice span');
+	guessColours[guessIndex] = choice[index].style.backgroundColor;
+	var user_colour = document.querySelectorAll(".user span");
+	user_colour[guessIndex].style.background = guessColours[guessIndex];
+	changeColour(index + 1);
 }
 
 // Changes user guess (based on selection index)
 function changeColour(newIndex) {
+	var choice = document.querySelectorAll('.choice span');
+	choice[index].style.borderStyle = "none";
 	index = newIndex;
+	choice[index].style.borderStyle = "solid";
+	choice[index].style.borderColor = "#d9d9d9";
+
 }
 
 // Checks user answer upon submittal 

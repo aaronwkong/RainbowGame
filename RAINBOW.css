@@ -73,6 +73,8 @@ h1 {
 	Padding: 20px;
 	Margin-top: 10px;
 	Margin-bottom: 10px;
+	
+	border: none;
 }
 
 .button {
