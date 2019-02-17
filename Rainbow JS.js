@@ -18,7 +18,18 @@ function whitePage() {
 	}
 }
 
-
+// take out question and give slots
+function blank() {
+	var answer = document.getElementById("answer");
+	var answerChoice = document.querySelectorAll('.choice span');
+	var question = document.getElementById("question");
+	question.style.display = "none";
+/*	for (int i = 0; i < 9; ++i){
+		answerChoice[i].style.visibility = "visible";
+	}*/
+	answer.style.visibility = "visible";
+	
+}
 
 //Transitions into other pages  
 function transition() {
@@ -30,7 +41,7 @@ function transition() {
 	}
 	// if question is displayed rn
 	else {
-		setTimeout(whitePage, 5000);
+		setTimeout(blank, 5000);
 		var toShow = document.getElementById("answer");
 	}
 	toShow.style.visibility = "visible"; 
@@ -39,7 +50,7 @@ function transition() {
 
 // Resets colour scheme of game
 function resetColour() {
-	var colour_list = document.querySelectorAll('.choice');
+	var colour_list = document.querySelectorAll('.choice span');
 	if (lvlsPassed <= 5) {
 		colours = ['#ffcccc', '#ffe6cc', '#ffffcc', '#e6ffcc', '#ccffcc', '#ccffff', '#cce6ff', '#ccccff', '#e6ccff', '#ffcce6'];
 	}
