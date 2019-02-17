@@ -129,6 +129,8 @@ p {
 	Padding-left: 5%;
 	Padding-right: 5%;
 	Text-align: justify;
+	padding-top: 20px;
+	padding-bottom: 30px;
 }
 
 .invisible {
