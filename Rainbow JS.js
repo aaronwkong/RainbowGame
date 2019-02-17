@@ -1,81 +1,77 @@
-
+// some global variables xD
 var colours = ['#ffcccc', '#ffe6cc', '#ffffcc', '#e6ffcc', '#ccffcc', '#ccffff', '#cce6ff', '#ccccff', '#e6ccff', '#ffcce6'];
 var questionColours = ['#000000', '#000000', '#000000', '#000000', '#000000'];
 var guessColours = [0, 0, 0, 0, 0];
 var index = 0;
 var lvlsPassed = 0;
+var oldIndex = 0;
 
-// Displays a white page??
+
+// hides the answer and brings back the question page
 function whitePage() {
 	var answer = document.getElementById("answer");
-	// hide answer if shown
-	if (answer.style.visibility == "visible") {
-		answer.style.visibility = "hidden";
-	}
-	// show the answer if not shown already (i.e question was in display)
-	else {
-		answer.style.visibility = "visible";
-	}
+	var question = document.getElementById("question");
+	answer.style.visibility = "hidden";
+	question.style.display = "inline";
 }
+
 
 // take out question and give slots
 function blank() {
 	var answer = document.getElementById("answer");
-	var answerChoice = document.querySelectorAll('.choice span');
 	var question = document.getElementById("question");
 	question.style.display = "none";
-/*	for (int i = 0; i < 9; ++i){
-		answerChoice[i].style.visibility = "visible";
-	}*/
+	answer.style.zIndex = 1;
 	answer.style.visibility = "visible";
-	
 }
 
-//Transitions into other pages  
+
+// transitions into other pages  
 function transition() {
 	var answer = document.getElementById("answer");
 	// if answer is displayed rn
 	if (answer.style.visibility == "visible") {
 		whitePage();
-		var toShow = document.getElementById("question");
 	}
 	// if question is displayed rn
 	else {
 		setTimeout(blank, 5000);
-		var toShow = document.getElementById("answer");
 	}
-	toShow.style.visibility = "visible"; 
 }
 
 
 // Resets colour scheme of game
 function resetColour() {
 	var colour_list = document.querySelectorAll('.choice span');
-	if (lvlsPassed <= 5) {
+	// first 5 levels - easy difficulty
+	if (lvlsPassed <= 4) {
 		colours = ['#ffcccc', '#ffe6cc', '#ffffcc', '#e6ffcc', '#ccffcc', '#ccffff', '#cce6ff', '#ccccff', '#e6ccff', '#ffcce6'];
 	}
-	else if (lvlsPassed <= 10) {
+	// next 5 levels - medium-easy difficulty
+	else if (lvlsPassed <= 9) {
 		colours = ['#ffcccc', '#ffd9cc', '#ffe6cc', '#fff2cc', '#ffffcc', '#f2ffcc', '#d9ffcc', '#ccffe6', '#ccffff', '#ccf2ff'];
 	}
-	else if (lvlsPassed <= 15) {
+	// next 5 levels - medium difficulty
+	else if (lvlsPassed <= 14) {
 		colours = ['#e6ffff', '#c4ffff', '#99ffff', '#00e6e6', '#00b3b3', '#fff2f5', '#ffe6ed', '#ffccda', '#ff99b6', '#ff6691'];
 	}
-	else if (lvlsPassed <= 20) {
+	// next 5 levels - medium-hard difficulty
+	else if (lvlsPassed <= 19) {
 		colours = ['#e6ffe6', '#ccffcc', '#adffad', '#80fd80', '#40ff40', '#fff2e6', '#ffe6cc', '#fdd5aa', '#ffc180', '#ffa94d'];
 	}
-	else if (lvlsPassed <= 25) {
+	// next 5 levels - hard difficulty
+	else if (lvlsPassed <= 24) {
 		colours = ['#e6f2ff', '#cce5ff', '#b3d7ff', '#96c8ff', '#80bbff', '#eee6ff', '#e3d6ff', '#d9c7ff', '#c9b0ff', '#b999ff'];
 	}
+	// last 5 levels - extreme difficulty
 	else {
 		colours = ['#f2ffe6', '#e5ffcc', '#d3ffad', '#beff84', '#adff66', '#ffffe6', '#ffffcc', '#ffffac', '#ffff8e', '#ffff66'];
 	}
 	for (i = 0; i <= 9; ++i) {
 		colour_list[i].style.background = colours[i];
-		transition();
 	}
+	transition();
 }
-
-
 
 
 // Main Program
@@ -93,22 +89,22 @@ function main() {
 
 // Implements user's guess and modifies the guess array
 function guess(guessIndex) {
-	
 	var choice = document.querySelectorAll('.choice span');
-	guessColours[guessIndex] = choice[index].style.backgroundColor;
+	guessColours[index] = choice[guessIndex].style.backgroundColor;
+	choice[oldIndex].style.borderStyle = "none";
+	oldIndex = guessIndex;
+	choice[oldIndex].style.borderStyle = "solid";
+	choice[oldIndex].style.borderColor = "#d9d9d9";
 	var user_colour = document.querySelectorAll(".user span");
-	user_colour[guessIndex].style.background = guessColours[guessIndex];
-	changeColour(index + 1);
+	user_colour[index].style.background = guessColours[index];
+	++index;
 }
+
 
 // Changes user guess (based on selection index)
 function changeColour(newIndex) {
-	var choice = document.querySelectorAll('.choice span');
-	choice[index].style.borderStyle = "none";
+	var user_colour = document.querySelectorAll(".user span");
 	index = newIndex;
-	choice[index].style.borderStyle = "solid";
-	choice[index].style.borderColor = "#d9d9d9";
-
 }
 
 
@@ -129,19 +125,30 @@ function guessAnswer() {
 	for (i = 0; i < 5; ++i){ 
 		questionColours[i] = invisible[i].style.backgroundColor; // fill questionColours[i] with the rgb instead of hex
 	}
+	// testing if they lost
 	for (i = 0; i < 5; ++i) {
 		if (guessColours[i] != questionColours[i]) { // guesColours[i] gets converted to rgb so we want questionsColours[i] as rgb too
 			alert("Incorrect colours!"); // for now
 			lose = true;
+			lvlsPassed = 0;
 			break;
 			// don't know what happens yet - page changes and error code
 		}
 	}
-
-	if(lose == false){
-		alert("Correct!"); // for now
-	}
 	// they succeeded if this happens! 
-	++lvlsPassed;
+	if(lose == false){
+		alert("Correct!");
+		++lvlsPassed;		// for now
+	}
+	
+	// restart game for user
+	var user_colour = document.querySelectorAll(".user span");
+	for (i = 0; i < 5; ++i) {
+		guessColours[i] = "#ffffff";
+		user_colour[i].style.background = guessColours[i];
+	}
+	var lose = false;
+	index = 0;
 	transition();
+	main();
 }

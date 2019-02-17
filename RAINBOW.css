@@ -19,6 +19,8 @@ h1 {
 	Width:100%;
 	Text-align:center;
 	transition: 2s ease-in-out;
+	visibility: visible;
+	position: absolute;
 }
 
 .question span{
@@ -100,10 +102,11 @@ h1 {
 	color: #ffffff;							
 }
 
-.answer {
-	transition: 2s ease-in-out;
+#answer {
+	z-index: -1;
 	visibility: hidden;
 	position: relative;
+	top: 0px;
 }
 
 h2 {
