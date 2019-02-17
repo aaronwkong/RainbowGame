@@ -1,0 +1,129 @@
+h1 {
+  font-family: "Quantico",sans-serif;
+  Color: white;
+  Font-size: 38px;
+  Letter-spacing: 5px;
+}
+
+.pop{
+  padding-left: 38px;
+  Background-image: url("LAST.png");
+  Border-radius: 20px;
+  Background-size: cover;
+  Opacity: 0.75;
+}
+
+
+
+.question {
+Width:100%;
+Text-align:center;
+}
+
+.question span{
+   Height: 150px;
+   Width:  150px;
+   Background-Color: #000000;
+   Border-radius: 20%;
+   Display: inline-block;
+   Vertical-align: top;
+   Text-align: center;
+   Margin: 2%;
+   Padding: 20px;
+Margin-top: 150px;
+Margin-bottom: 150px;
+}
+
+.user {
+Width:100%;
+Text-align:center;
+}
+
+.user span{
+   Height: 70px;
+   Width:  70px;
+   Background-Color: #ffffff;
+   Border-radius: 20%;
+   Display: inline-block;
+   Vertical-align: top;
+   Text-align: center;
+   Margin: 1.5%;
+   Padding: 20px;
+Margin-top: 40px;
+Margin-bottom: 100px;
+Border-color: #d9d9d9;
+Border-style: dashed;
+}
+
+.choice {
+Width:100%;
+Text-align:center;
+}
+
+.choice span{
+   Height: 70px;
+   Width:  70px;
+   Background-Color: #ffffff;
+   Border-radius: 20%;
+   Display: inline-block;
+   Vertical-align: top;
+   Text-align: center;
+   Margin: 1.5%;
+   Padding: 20px;
+Margin-top: 10px;
+Margin-bottom: 10px;
+Border-color: #d9d9d9;
+Border-style: dashed;
+}
+
+.button {
+Width:100%;
+Text-align:center;
+}
+
+.button span{
+   Height: 100px;
+   Width:  100px;
+   Background-Color: #ccffb3;
+   Border-radius: 50%;
+   Display: inline-block;
+   Vertical-align: top;
+   Text-align: center;
+   Margin: 15%;
+   Padding: 20px;
+Margin-top: 50px;
+Margin-bottom: 50px;
+font-family: "Quantico",sans-serif;
+Font-size: 40px;
+Line-height: 100px;
+color: #ffffff;
+}
+
+answer {
+}
+
+h2 {
+  Color: white;
+Margin-left: 2%;
+Margin-right: 2%;
+  Padding-left: 25px;
+  Padding-top: 4px;
+  Padding-bottom: 4px;
+  font-family: "Quantico",sans-serif;
+  Font-size: 20px;
+  Letter-spacing: 2px;
+  Background-Color: #BFBFBF;
+  Border-radius: 15px;
+}
+
+p {
+  font-family: "Quantico",sans-serif;
+  Font-size:20px;
+  Padding-left: 5%;
+  Padding-right: 5%;
+Text-align: justify;
+}
+
+
+.empty {
+  }
